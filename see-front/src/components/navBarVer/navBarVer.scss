@@ -1,0 +1,26 @@
+.NavBarVer{
+    width: 117px;
+    background-color: black;
+    height: calc(100vh - 91px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.NavBarVerListPicto{
+    display: flex;
+    
+    flex-direction: column;
+    height: 316px;
+    justify-content: space-between;
+    margin: 26px;
+}
+
+.copyright{
+    position: absolute;
+    bottom: 59px;
+    left: 46px;
+    writing-mode: tb-rl;
+    transform: rotate(-180deg);
+}

@@ -1,0 +1,22 @@
+
+@import url(../components/navBarHor/navBarHor.scss);
+@import url(../components/navBarVer/navBarVer.scss);
+@import url(../components/pictoTagVert/pictoTagVert.scss);
+@import url(../components/indicateur/indicateur.scss);
+@import url(../components/chart/barChart/barChart.scss);
+@import url(../components/content/content.scss);
+@import url(../components/chart/lineChart/lineChart.scss);
+@import url(../components/chart/radarChart/radarChart.scss);
+@import url(../components/chart/pieChart/pieChart.scss);
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+

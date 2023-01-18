@@ -1,0 +1,41 @@
+.pieDiv{
+    width: 258px;
+    height: 263px;
+    border-radius: 5px;
+    position: relative;
+    background-color: #FBFBFB;
+}
+
+.pieTitre{
+    position: absolute;
+    top: 24px;
+    left: 30px;
+    font-weight: 500;
+font-size: 15px;
+
+}
+
+.pieResult{
+    position: absolute;
+    background-color: #FFFFFF;
+    top: 47px;
+    left: 45px;
+    width: 169px;
+    height: 169px;
+    border-radius: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pieResultPercent{
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.pieResultObj{
+    color: #74798C;
+    text-align: center;
+    width: 90px;
+}

@@ -1,0 +1,23 @@
+.menuHor{
+    background-color: black;
+    display: flex;
+    text-decoration: none;
+    height: 91px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 28px;
+    padding-right: 91px;
+}
+.menuHorLogo{
+    width: 178px;
+    height: 61px;
+}
+
+.menuHorLink{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+}

@@ -1,0 +1,22 @@
+.picto{
+    position: relative;
+    height: 64px;
+    width: 64px;
+}
+
+.pictoTag{
+    height: 64px;
+    width: 64px;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+}
+
+.pictoTagImg{
+    height: 32px;
+    width: 32px;
+    margin: 16px;
+    z-index: 1;
+    position: absolute;
+}

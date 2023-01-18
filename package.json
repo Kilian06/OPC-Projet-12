@@ -1,0 +1,19 @@
+{
+  "name": "opc-projet-12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kilian06/OPC-Projet-12.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kilian06/OPC-Projet-12/issues"
+  },
+  "homepage": "https://github.com/Kilian06/OPC-Projet-12#readme"
+}

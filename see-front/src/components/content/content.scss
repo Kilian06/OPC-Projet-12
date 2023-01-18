@@ -1,0 +1,57 @@
+.content{
+    position: absolute;
+    top: 159px;
+    left: 224px;
+}
+
+.titre{
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+}
+
+
+.contentWelcome{
+    font-size: 48px;
+    font-weight: 500;
+    span{
+        color: red;
+    }
+}
+
+.contentGG{
+    font-weight: 400;
+font-size: 18px;
+}
+
+
+
+
+.contentActiviteQuotidienneTitre{
+    position: absolute;
+    top: 24px;
+    left: 32px;
+}
+
+
+.groupChart{
+    width: 840px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.groupCard{
+    height: 613px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.groupChartCard{
+    margin-top: 77px;
+    width: 100%;
+    display: flex;
+    gap: 30px;
+}
