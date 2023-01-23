@@ -1,7 +1,6 @@
 import React from 'react';
 
 function PictoTagVert(props) {
-    console.log(props.backgroundColor)
     
     return (
         <div className='picto'>

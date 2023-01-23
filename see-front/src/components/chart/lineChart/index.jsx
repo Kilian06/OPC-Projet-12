@@ -26,7 +26,6 @@ function GraphiqueLineChart(donnee) {
     var day = (data[i].day + todayIndex) % 7;
     data[i].day = weekDays[day];
   }
-  console.log(data);
   if (!data[0].day) {
     return <div className="charDureeSession"></div>;
   } else {

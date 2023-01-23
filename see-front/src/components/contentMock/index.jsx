@@ -10,9 +10,14 @@ import logoPoulet from "../../assets/chicken.svg";
 import logoPomme from "../../assets/apple.svg";
 import logoCheese from "../../assets/cheeseburger.svg";
 import CardIndicateur from "../indicateur";
+import {USER_MAIN_DATA} from "../../data/datamock.js"
 
-function Content(props) {
-  let { id } = useParams();
+import {USER_ACTIVITY, USER_AVERAGE_SESSIONS, USER_PERFORMANCE} from "../../data/datamock.js"
+
+function ContentMock(props) {
+
+  let idParam = useParams();
+
   const [isLoadingName, setIsLoadingName] = useState(true);
   const [userData, setName] = useState();
 
@@ -27,15 +32,13 @@ function Content(props) {
 
   // Affichage du nom
   useEffect(() => {
-    async function fetchName() {
-      try {
-        const response = await fetch(`http://localhost:3000/user/${id}`);
-        const result = await response.json();
-        setName(result.data);
+    function fetchName() {
+        console.log(USER_MAIN_DATA)
+        console.log(idParam)
+        const result11 = USER_MAIN_DATA.find(element => element.id === 12)
+        console.log(result11)
+        setName(result11);
         setIsLoadingName(false);
-      } catch (error) {
-        console.error(error);
-      }
     }
     fetchName();
   }, []);
@@ -46,11 +49,7 @@ function Content(props) {
   useEffect(() => {
     async function fetchActivity() {
       try {
-        const reponse = await fetch(
-          `http://localhost:3000/user/${id}/activity`
-        );
-        const result = await reponse.json();
-        console.log(result)
+        const result = USER_ACTIVITY.find(element => element.userId === 12);
         setActivity(result);
         setIsLoadingActivity(false);
       } catch (error) {
@@ -64,11 +63,9 @@ function Content(props) {
   useEffect(() => {
     async function fetchAverageSession() {
       try {
-        const reponse = await fetch(
-          `http://localhost:3000/user/${id}/average-sessions`
-        );
-        const result = await reponse.json();
-        setSession(result.data);
+        const result = USER_AVERAGE_SESSIONS.find(element => element.userId === 12)
+        console.log(result)
+        setSession(result);
         setIsLoadingSession(false);
       } catch (error) {
         console.error(error);
@@ -81,11 +78,9 @@ function Content(props) {
   useEffect(() => {
     async function fetchAveragePerformance() {
       try {
-        const reponse = await fetch(
-          `http://localhost:3000/user/${id}/performance`
-        );
-        const result = await reponse.json();
-        setPerformance(result.data);
+        var result = USER_PERFORMANCE.find(element => element.userId === 12)
+        console.log(result)
+        setPerformance(result);
         setIsLoadingPerformance(false);
       } catch (error) {
         console.error(error);
@@ -110,7 +105,7 @@ function Content(props) {
         
       <div className="groupChart">
         <div>
-          {!isLoadingActivity && <GraphiqueBarChart source={userActivity.data} />}
+          {!isLoadingActivity && <GraphiqueBarChart source={userActivity} />}
         </div>
         <div>
           {!isLoadingSession && <GraphiqueLineChart source={userSession} />}
@@ -172,4 +167,4 @@ function Content(props) {
   );
 }
 
-export default Content;
+export default ContentMock;

@@ -1,19 +1,25 @@
 .content{
     position: absolute;
-    top: 159px;
-    left: 224px;
+    top: 130px;
+    left: 170px;
+    width: calc(100% - 170px);
+    height: calc(100% - 130px);
 }
 
 .titre{
     display: flex;
     flex-direction: column;
     gap: 41px;
+    width: 100%;
+    height: auto;
 }
 
 
 .contentWelcome{
     font-size: 48px;
     font-weight: 500;
+    width: 100%;
+    height: auto;
     span{
         color: red;
     }
@@ -24,7 +30,10 @@
 font-size: 18px;
 }
 
-
+.contentGraphique{
+    width: 100%;
+    height: 100%;
+}
 
 
 .contentActiviteQuotidienneTitre{
@@ -35,7 +44,8 @@ font-size: 18px;
 
 
 .groupChart{
-    width: 840px;
+    width: 100%;
+    max-width: 840px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -44,14 +54,16 @@ font-size: 18px;
 
 .groupCard{
     height: 613px;
+    width: 258px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-left: 30px;
 }
 
 .groupChartCard{
     margin-top: 77px;
     width: 100%;
     display: flex;
-    gap: 30px;
+    flex-direction: row;
 }

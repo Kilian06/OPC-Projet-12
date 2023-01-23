@@ -2,7 +2,6 @@ import React from "react";
 
 function LineCustomTooltip(active, payload, label) {
   if (active.active) {
-    console.log(active)
 
     return (
       <div>

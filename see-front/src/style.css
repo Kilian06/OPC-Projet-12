@@ -7,6 +7,7 @@
 @import url(../components/chart/lineChart/lineChart.scss);
 @import url(../components/chart/radarChart/radarChart.scss);
 @import url(../components/chart/pieChart/pieChart.scss);
+@import url(../components/navlink/navlink.scss);
 * {
   margin: 0;
   padding: 0;

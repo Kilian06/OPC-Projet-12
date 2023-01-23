@@ -2,7 +2,6 @@ import React from 'react';
 import PictoTagVert from '../pictoTagVert';
 
 function CardIndicateur(props) {
-    console.log(props.info)
     return (
         <li className='cardIndicateur'>
             <div className='cardPicto'>
