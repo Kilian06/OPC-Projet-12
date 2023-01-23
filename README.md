@@ -8,7 +8,8 @@ The project structure is set up in such a way
 OPC-PROJET-12/
 |
 |-see-back/
-|  |- ... (element for API)
+|  |- ... (element for API from the repo :  P9-front-end-dashboard
+[ fork this repository ](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard))  https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
 |
 |-see-front/
 |  |- ...
@@ -36,5 +37,29 @@ For class, variable and function name : ```camelCase```
 The project uses Node packages and uses ```npm```, so you will need Node.js
 It can be download here : https://nodejs.org/
 
+after that, Fork the Front-end [repository](https://github.com/Kilian06/OPC-Projet-12/tree/main/see-front) 
+Clone it locally with with git clone
+Next, you will need to install all project dependencies with ``` npm install```
+
+## 2.4 - Front-end : Start
+
+Before start you will need to start back-end.
+After that, navigate to the frontend directory in the terminal and type ```npm start```
+
+Since the backend is already running, the terminal will prompt you to confirm using port 3001 instead of 3000 (which is already in use by the backend). To do this, type ```Y``` and press ```Enter```. After that, a browser page should open on the URL :```http://localhost:3001/```
 
 
+## 3. - Back-end
+## 3.1 - Back-end : Installation
+- [NodeJS (version 12.18)](https://nodejs.org/en/blog/release/v12.18.0/)
+- Yarn
+
+If you are working with several versions of NodeJS, we recommend you install [nvm](https://github.com/nvm-sh/nvm). This tool will allow you to easily manage your NodeJS versions.
+
+Then you need to Fork the repository and Clone it on your computer and run the command ```npm install```
+
+## 3.2 - Back-end : Launch
+
+You need to launch the back-end before the front-end. To do that, you have to run thsi command ```npm start``` in the back-end folder.
+If all is ok, you will see in the terminal : Magic happens on port 3000
+Afterthat you can start the front-end.
