@@ -16,7 +16,6 @@ import CustomTooltip from "../tools/customTooltip";
 
 function GraphiqueBarChart(donnee) {
   const data = donnee.source.sessions;
-  console.log(data);
   const ymax = Math.max(...data.map((sessions) => sessions.kilogram));
   const ymin = Math.min(...data.map((sessions) => sessions.kilogram));
 

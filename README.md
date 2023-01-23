@@ -22,10 +22,17 @@ OPC-PROJET-12/
 |      |- styles
 |      |      |-mains.scss
 ```
+
 The naming conventions used for the project are as follows
 
 CSS & JS :
 For class, variable and function name : ```camelCase```
+The file mains.scss containt all url of each scss file
+
+REACT : 
+In each component there are a file name index.jsx and the style file name component.scss
+
+
 
 ## 2. - Front-end
 ## 2.1 - Front-end : Stack
