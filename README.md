@@ -8,8 +8,7 @@ The project structure is set up in such a way
 OPC-PROJET-12/
 |
 |-see-back/
-|  |- ... (element for API from the repo :  P9-front-end-dashboard
-[ fork this repository ](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard))  https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard
+|  |- ... (element for API from the repo :  P9-front-end-dashboard)
 |
 |-see-front/
 |  |- ...
