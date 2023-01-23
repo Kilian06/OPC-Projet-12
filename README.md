@@ -14,7 +14,13 @@ OPC-PROJET-12/
 |-see-front/
 |  |- ...
 |  |- src
-
+|      |- assets
+|      |- components
+|      |      |-component1
+|      |            |- index.jsx
+|      |            |- composant1.scss
+|      |- styles
+|      |      |-mains.scss
 ```
 The naming conventions used for the project are as follows
 

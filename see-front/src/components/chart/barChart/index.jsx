@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 import {
   ResponsiveContainer,
   BarChart,
@@ -9,7 +11,6 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-// import { useState } from "react";
 
 import CustomTooltip from "../tools/customTooltip";
 
@@ -18,9 +19,6 @@ function GraphiqueBarChart(donnee) {
   console.log(data);
   const ymax = Math.max(...data.map((sessions) => sessions.kilogram));
   const ymin = Math.min(...data.map((sessions) => sessions.kilogram));
-
-  // const [width, setWidth] = useState(0);
-  // const [height, setHeight] = useState(0);
 
   return (
     <div className="chartActiviteQuot">
@@ -36,7 +34,7 @@ function GraphiqueBarChart(donnee) {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="day" type="category" stroke="#9B9EAC"/>
+          <XAxis dataKey="day" type="category" stroke="#9B9EAC" />
           <YAxis
             type="number"
             yAxisId="left"
