@@ -8,13 +8,13 @@
 @import url(../components/chart/radarChart/radarChart.scss);
 @import url(../components/chart/pieChart/pieChart.scss);
 @import url(../components/navlink/navlink.scss);
+@import url(../components/layout/layout.scss);
 * {
   margin: 0;
   padding: 0;
 }
 
 html {
-  width: 100%;
   font-family: "Roboto", sans-serif;
 }
 

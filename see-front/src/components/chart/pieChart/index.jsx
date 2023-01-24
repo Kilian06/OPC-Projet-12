@@ -1,19 +1,22 @@
 import React from "react";
-import { PureComponent } from "react";
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
+import PropTypes from 'prop-types';
+import { RadialBarChart, RadialBar } from 'recharts';
 
-
-
-function GraphiquePieChart(donnee) {
-  if (donnee.source.todayScore === undefined) {
+/**
+ * this function allows to generate a graph with the data of the elements passed in props
+ * in this case the graph is used to represent the progress of the day
+ * @param {*} props response of the API http://localhost:3000/user/${id}
+ * @returns React Component - PieChart
+ */
+function GraphiquePieChart(props) {
+  // resolution of the anomaly in the API response
+  if (props.source.todayScore === undefined) {
     var dataPercent = [
-      { value: donnee.source.score},
-      // { name: "activitToDo", value: 1 - donnee.source.score },
+      { value: props.source.score},
     ];
   } else {
     var dataPercent = [
-      {value: donnee.source.todayScore },
-      // { name: "activitToDo", value: 1 - donnee.source.todayScore },
+      {value: props.source.todayScore },
     ];
   }
 
@@ -56,12 +59,26 @@ function GraphiquePieChart(donnee) {
           cornerRadius={100}
           fill="#FF0000"
         />
-
       </RadialBarChart>
       </div>
     </div>
 
   );
 }
+
+// propType of the fonction to check if props value is OK with the component
+GraphiquePieChart.propTypes = {
+  source: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    keyData: PropTypes.shape({
+      calorieCount: PropTypes.number.isRequired,
+      carbohydrateCount: PropTypes.number.isRequired,
+      lipidCount: PropTypes.number.isRequired,
+      proteinCount: PropTypes.number.isRequired,
+    }).isRequired,
+    score: PropTypes.number,
+    todayScore: PropTypes.number,
+  }).isRequired
+};
 
 export default GraphiquePieChart;

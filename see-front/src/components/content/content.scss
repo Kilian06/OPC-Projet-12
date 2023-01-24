@@ -2,7 +2,7 @@
     position: absolute;
     top: 130px;
     left: 170px;
-    width: calc(100% - 170px);
+    width: calc(100vw - 170px);
     height: calc(100% - 130px);
 }
 
@@ -44,8 +44,7 @@ font-size: 18px;
 
 
 .groupChart{
-    width: 100%;
-    max-width: 840px;
+    width: 840px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -62,8 +61,8 @@ font-size: 18px;
 }
 
 .groupChartCard{
-    margin-top: 77px;
-    width: 100%;
+    margin-top: 50px;
+    width: 1128px;
     display: flex;
     flex-direction: row;
 }

@@ -1,5 +1,5 @@
 .menuHor{
-    background-color: black;
+    background-color:black;
     display: flex;
     text-decoration: none;
     height: 91px;
@@ -8,6 +8,8 @@
     align-items: center;
     padding-left: 28px;
     padding-right: 91px;
+    width: calc( 100% - 28px - 91px);
+    min-width: 1298px;
 }
 .menuHorLogo{
     width: 178px;

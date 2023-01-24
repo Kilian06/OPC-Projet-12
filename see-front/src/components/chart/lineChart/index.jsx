@@ -1,37 +1,36 @@
 import React from "react";
-import { PureComponent } from "react";
+import PropTypes from "prop-types";
+
 import {
   LineChart,
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
-  ResponsiveContainer,
+  Rectangle,
+  Customized,
 } from "recharts";
 import LineCustomTooltip from "../tools/lineTooltip";
-import { ReferenceArea } from "recharts";
-import ReferenceBands from "../tools/shapeArea";
 
-function GraphiqueLineChart(donnee) {
-  var data = donnee.source.sessions;
+/**
+ * this function allows to generate a line graph with the data of the elements passed in props
+ * in this case the graph is used to display the duration of the sessions day by day
+ * @param {*} props response of the API http://localhost:3000/user/${id}/average-sessions
+ * @returns React Component - LineChart
+ */
 
-  var today = new Date();
-  var todayIndex = today.getDay();
-
-  var weekDays = ["D", "L", "M", "M", "J", "V", "S"];
+function GraphiqueLineChart(props) {
+  // need to format data with weedkays
+  var data = props.source.sessions;
+  var weekDays = ["L", "M", "M", "J", "V", "S", "D"];
 
   for (var i = 0; i < data.length; i++) {
-    var day = (data[i].day + todayIndex) % 7;
-    data[i].day = weekDays[day];
+    data[i].day = weekDays[i];
   }
-  if (!data[0].day) {
-    return <div className="charDureeSession"></div>;
-  } else {
-    return (
-      <div className="charDureeSession">
-        <div>
+
+  return (
+    <div className="charDureeSession">
+      <div>
         <LineChart
           width={258}
           height={263}
@@ -43,7 +42,14 @@ function GraphiqueLineChart(donnee) {
             bottom: 5,
           }}
         >
-          <XAxis type="category" dataKey="day" />
+          <XAxis
+            dataKey="day"
+            tickLine={false}
+            style={{ transform: "scale(1)", transformOrigin: "bottom" }}
+            tick={{ fill: "#FFFFFF", fontWeight: 500, fontSize: 12 }}
+            axisLine={false}
+            interval="preserveStartEnd"
+          />
           <Tooltip
             animationEasing="ease-out"
             content={<LineCustomTooltip />}
@@ -63,28 +69,34 @@ function GraphiqueLineChart(donnee) {
             }}
             margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
           />
+          <YAxis hide padding={{ top: 50, bottom: 0 }} />
+
           <Line
             type="monotone"
             dataKey="sessionLength"
             stroke="#FFFFFF"
             dot={false}
           />
-          <ReferenceArea
-            x1="S"
-            x2="D"
-            strokeOpacity={0.3}
-            fillOpacity={0.2}
-            fill="#000000"
-          />
         </LineChart>
-        </div>
-        <div>
-          <p className="lineTitre">Durée moyenne des sessions</p>
-        </div>
-        
       </div>
-    );
-  }
+      <div>
+        <p className="lineTitre">Durée moyenne des sessions</p>
+      </div>
+    </div>
+  );
 }
+
+// propType of the fonction to check if props value is OK with the component
+GraphiqueLineChart.propTypes = {
+  source: PropTypes.shape({
+    sessions: PropTypes.arrayOf(
+      PropTypes.shape({
+        day: PropTypes.number.isRequired,
+        sessionLength: PropTypes.number.isRequired,
+      })
+    ).isRequired,
+    userId: PropTypes.number.isRequired,
+  }).isRequired,
+};
 
 export default GraphiqueLineChart;

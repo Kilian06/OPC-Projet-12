@@ -14,8 +14,17 @@ import {
 
 import CustomTooltip from "../tools/customTooltip";
 
-function GraphiqueBarChart(donnee) {
-  const data = donnee.source.sessions;
+
+/**
+ * this function allows to generate a bar graph with the data of the elements passed in props
+ * in this case the graph is used to represent the energy spent by the user and its weight
+ * @param {*} props response of the API http://localhost:3000/user/${id}/activity
+ * @returns React Component - BarChart
+ */
+
+function GraphiqueBarChart(props) {
+  // data formatting
+  const data = props.source.sessions;
   const ymax = Math.max(...data.map((sessions) => sessions.kilogram));
   const ymin = Math.min(...data.map((sessions) => sessions.kilogram));
 
@@ -95,4 +104,19 @@ function GraphiqueBarChart(donnee) {
   );
 }
 
+// propType of the fonction to check if props value is OK with the component
+GraphiqueBarChart.propTypes = {
+      source: PropTypes.shape({
+          userId: PropTypes.number.isRequired,
+          sessions: PropTypes.arrayOf(PropTypes.shape({
+              day: PropTypes.string.isRequired,
+              kilogram: PropTypes.number.isRequired,
+              calories: PropTypes.number.isRequired
+          })).isRequired
+      }).isRequired
+};
+
+
 export default GraphiqueBarChart;
+
+

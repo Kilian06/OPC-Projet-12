@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/main.scss'
-import Layout from './components/layout/Layout';
+import Layout from './components/layout/index';
 import Content from './components/content';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';

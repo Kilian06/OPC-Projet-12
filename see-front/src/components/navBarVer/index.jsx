@@ -10,7 +10,7 @@ function NavBarVer(props) {
 
 
     return (
-        <div>
+        
             <div className='NavBarVer'>
                 <ul className='NavBarVerListPicto'>
                     <PictoTagVert picto={logosport1} backgroundColor="#FFFFFF" />
@@ -20,7 +20,7 @@ function NavBarVer(props) {
                 </ul>
                 <p className='copyright'>Copiryght, SportSee 2020</p>
             </div>
-        </div>
+        
     );
 }
 

@@ -2,25 +2,27 @@
     width: 117px;
     background-color: black;
     height: calc(100vh - 91px);
+    min-height: 850px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:space-around;
     color: white;
+    position: relative;
 }
 
 .NavBarVerListPicto{
     display: flex;
-    
     flex-direction: column;
     height: 316px;
     justify-content: space-between;
-    margin: 26px;
+    margin: 26px auto;
 }
 
 .copyright{
     position: absolute;
-    bottom: 59px;
+    bottom: 15px;
     left: 46px;
     writing-mode: tb-rl;
     transform: rotate(-180deg);
+    display:block;
 }
