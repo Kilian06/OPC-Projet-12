@@ -11,6 +11,7 @@ import logoPomme from "../../assets/apple.svg";
 import logoCheese from "../../assets/cheeseburger.svg";
 import CardIndicateur from "../indicateur";
 import { USER_MAIN_DATA } from "../../data/datamock.js";
+import Erreur from "../erreur";
 
 import {
   USER_ACTIVITY,
@@ -51,7 +52,8 @@ function ContentMock() {
       setActivity(result);
       setIsLoadingActivity(false);
     } catch (error) {
-      console.error(error);
+      console.error(error)
+      ;
     }
   }
 
@@ -97,6 +99,10 @@ function ContentMock() {
     fetchAveragePerformance();
   }, []);
 
+
+  if(!userData){
+    return <Erreur />
+  }else {
   return (
     <div className="contentGraphique">
       <div className="titre">
@@ -172,6 +178,7 @@ function ContentMock() {
       </div>
     </div>
   );
+}
 }
 
 export default ContentMock;

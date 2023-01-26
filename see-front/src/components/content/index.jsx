@@ -10,6 +10,7 @@ import logoPoulet from "../../assets/chicken.svg";
 import logoPomme from "../../assets/apple.svg";
 import logoCheese from "../../assets/cheeseburger.svg";
 import CardIndicateur from "../indicateur";
+import Erreur from "../erreur";
 
 /**
  * This function is used to make all the API calls necessary to create the graphics. It also calls each react component to represent them
@@ -33,6 +34,8 @@ function Content() {
     } catch (error) {
       console.error(error);
     }
+
+    
   }
 
   const [userActivity, setActivity] = useState([]);
@@ -92,83 +95,92 @@ function Content() {
     fetchAveragePerformance();
   }, []);
 
-  return (
-    <div className="contentGraphique" id="contentGraphique">
-      <div className="titre">
-        {!isLoadingName && (
-          <p className="contentWelcome">
-            Bonjour <span>{userData.userInfos.firstName}</span>
+  if(!userData){
+    return <Erreur />
+  }else {
+    return (
+      <div className="contentGraphique" id="contentGraphique">
+        <div className="titre">
+          {!isLoadingName && (
+            <p className="contentWelcome">
+              Bonjour <span>{userData.userInfos.firstName}</span>
+            </p>
+          )}
+          <p className="contentGG">
+            Félicitation ! Vous avez explosé vos objectifs hier 👏
           </p>
-        )}
-        <p className="contentGG">
-          Félicitation ! Vous avez explosé vos objectifs hier 👏
-        </p>
-      </div>
-      <div className="groupChartCard">
-        <div className="groupChart">
-          <div>
-            {!isLoadingActivity && (
-              <GraphiqueBarChart source={userActivity.data} />
-            )}
-          </div>
-          <div>
-            {!isLoadingSession && <GraphiqueLineChart source={userSession} />}
-          </div>
-          <div>
-            {!isLoadingPerformance && (
-              <GraphiqueRadarChart source={userPerformance} />
-            )}
-          </div>
-          <div>{!isLoadingName && <GraphiquePieChart source={userData} />}</div>
         </div>
+        <div className="groupChartCard">
+          <div className="groupChart">
+            <div>
+              {!isLoadingActivity && (
+                <GraphiqueBarChart source={userActivity.data} />
+              )}
+            </div>
+            <div>
+              {!isLoadingSession && <GraphiqueLineChart source={userSession} />}
+            </div>
+            <div>
+              {!isLoadingPerformance && (
+                <GraphiqueRadarChart source={userPerformance} />
+              )}
+            </div>
+            <div>{!isLoadingName && <GraphiquePieChart source={userData} />}</div>
+          </div>
+  
+          <div>
+            <ul className="groupCard">
+              {!isLoadingActivity && (
+                <CardIndicateur
+                  logo={logoEnergy}
+                  back={"#FF0000"}
+                  opacity={0.1}
+                  info={userData.keyData.calorieCount}
+                  unite={"kCal"}
+                  type={"Calories"}
+                />
+              )}
+              {!isLoadingActivity && (
+                <CardIndicateur
+                  logo={logoPoulet}
+                  back={"#4ab8ff"}
+                  opacity={0.1}
+                  info={userData.keyData.proteinCount}
+                  unite={"g"}
+                  type={"Proteines"}
+                />
+              )}
+              {!isLoadingActivity && (
+                <CardIndicateur
+                  logo={logoPomme}
+                  back={"#F9CE23"}
+                  opacity={0.1}
+                  info={userData.keyData.carbohydrateCount}
+                  unite={"g"}
+                  type={"Glucides"}
+                />
+              )}
+              {!isLoadingActivity && (
+                <CardIndicateur
+                  logo={logoCheese}
+                  back={"#fd5181"}
+                  opacity={0.1}
+                  info={userData.keyData.lipidCount}
+                  unite={"g"}
+                  type={"Lipides"}
+                />
+              )}
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
+    
+  
 
-        <div>
-          <ul className="groupCard">
-            {!isLoadingActivity && (
-              <CardIndicateur
-                logo={logoEnergy}
-                back={"#FF0000"}
-                opacity={0.1}
-                info={userData.keyData.calorieCount}
-                unite={"kCal"}
-                type={"Calories"}
-              />
-            )}
-            {!isLoadingActivity && (
-              <CardIndicateur
-                logo={logoPoulet}
-                back={"#4ab8ff"}
-                opacity={0.1}
-                info={userData.keyData.proteinCount}
-                unite={"g"}
-                type={"Proteines"}
-              />
-            )}
-            {!isLoadingActivity && (
-              <CardIndicateur
-                logo={logoPomme}
-                back={"#F9CE23"}
-                opacity={0.1}
-                info={userData.keyData.carbohydrateCount}
-                unite={"g"}
-                type={"Glucides"}
-              />
-            )}
-            {!isLoadingActivity && (
-              <CardIndicateur
-                logo={logoCheese}
-                back={"#fd5181"}
-                opacity={0.1}
-                info={userData.keyData.lipidCount}
-                unite={"g"}
-                type={"Lipides"}
-              />
-            )}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
+
+  
 }
 
 export default Content;
