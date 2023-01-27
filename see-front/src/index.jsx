@@ -1,3 +1,6 @@
+
+
+
 import React from 'react';
 import './styles/main.scss'
 import Layout from './components/layout/index';
@@ -19,7 +22,6 @@ const root = createRoot(rootElement);
           <Route path='/user/:id' element={<Layout><Content /></ Layout>} />
           <Route path='/user/mock/:id' element={<Layout><ContentMock /></ Layout>} />
           <Route path='/*' element={<Layout><Erreur /></ Layout>} />
-
         </Routes>
     </BrowserRouter>
       );

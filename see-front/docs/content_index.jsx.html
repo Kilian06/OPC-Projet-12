@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: content/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: content/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import GraphiqueBarChart from "../chart/barChart";
+import GraphiqueLineChart from "../chart/lineChart";
+import GraphiquePieChart from "../chart/pieChart";
+import GraphiqueRadarChart from "../chart/radarChart";
+import logoEnergy from "../../assets/energy.svg";
+import logoPoulet from "../../assets/chicken.svg";
+import logoPomme from "../../assets/apple.svg";
+import logoCheese from "../../assets/cheeseburger.svg";
+import CardIndicateur from "../indicateur";
+import Erreur from "../erreur";
+
+/**
+ * This function is used to make all the API calls necessary to create the graphics. It also calls each react component to represent them
+ * @returns JSX Content
+ */
+
+function Content() {
+  //recovery of the id of the user passed in parameter
+  let { id } = useParams();
+
+  const [isInError, setIsInError] = useState(false)
+
+  const [isLoadingName, setIsLoadingName] = useState(true);
+  const [userData, setName] = useState();
+
+  // API call to retrieve user information based on the parameter passed in the URL
+  async function fetchName() {
+    try {
+      const response = await fetch(`http://localhost:3000/user/${id}`);
+      const result = await response.json();
+      setName(result.data);
+      setIsLoadingName(false);
+      if(!response.ok){
+        throw new Error()
+      }
+    } catch (error) {
+      console.error(error);
+      setIsInError(true)
+    }
+
+    
+  }
+
+  const [userActivity, setActivity] = useState([]);
+  const [isLoadingActivity, setIsLoadingActivity] = useState(true);
+
+  // API call to retrieve user activity information based on id
+  async function fetchActivity() {
+    try {
+      const reponse = await fetch(`http://localhost:3000/user/${id}/activity`);
+      const result = await reponse.json();
+      setActivity(result);
+      setIsLoadingActivity(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const [userSession, setSession] = useState([]);
+  const [isLoadingSession, setIsLoadingSession] = useState(true);
+
+  // API call to retrieve user session information based on id
+  async function fetchAverageSession() {
+    try {
+      const reponse = await fetch(
+        `http://localhost:3000/user/${id}/average-sessions`
+      );
+      const result = await reponse.json();
+      setSession(result.data);
+      setIsLoadingSession(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const [userPerformance, setPerformance] = useState([]);
+  const [isLoadingPerformance, setIsLoadingPerformance] = useState(true);
+
+  // API call to retrieve performance information for a user based on id
+  async function fetchAveragePerformance() {
+    try {
+      const reponse = await fetch(
+        `http://localhost:3000/user/${id}/performance`
+      );
+      const result = await reponse.json();
+      setPerformance(result.data);
+      setIsLoadingPerformance(false);
+    } catch (error) {
+      console.error(error);
+
+    }
+  }
+
+  // UseEffect to start each function
+  useEffect(() => {
+    fetchName();
+    fetchActivity();
+    fetchAverageSession();
+    fetchAveragePerformance();
+  }, []);
+
+  if(isInError){
+    return &lt;Erreur />
+  }else {
+    return (
+      &lt;div className="contentGraphique" id="contentGraphique">
+        &lt;div className="titre">
+          {!isLoadingName &amp;&amp; (
+            &lt;p className="contentWelcome">
+              Bonjour &lt;span>{userData.userInfos.firstName}&lt;/span>
+            &lt;/p>
+          )}
+          &lt;p className="contentGG">
+            Félicitation ! Vous avez explosé vos objectifs hier 👏
+          &lt;/p>
+        &lt;/div>
+        &lt;div className="groupChartCard">
+          &lt;div className="groupChart">
+            &lt;div>
+              {!isLoadingActivity &amp;&amp; (
+                &lt;GraphiqueBarChart source={userActivity.data} />
+              )}
+            &lt;/div>
+            &lt;div>
+              {!isLoadingSession &amp;&amp; &lt;GraphiqueLineChart source={userSession} />}
+            &lt;/div>
+            &lt;div>
+              {!isLoadingPerformance &amp;&amp; (
+                &lt;GraphiqueRadarChart source={userPerformance} />
+              )}
+            &lt;/div>
+            &lt;div>{!isLoadingName &amp;&amp; &lt;GraphiquePieChart source={userData} />}&lt;/div>
+          &lt;/div>
+  
+          &lt;div>
+            &lt;ul className="groupCard">
+              {!isLoadingActivity &amp;&amp; (
+                &lt;CardIndicateur
+                  logo={logoEnergy}
+                  back={"#FF0000"}
+                  opacity={0.1}
+                  info={userData.keyData.calorieCount}
+                  unite={"kCal"}
+                  type={"Calories"}
+                />
+              )}
+              {!isLoadingActivity &amp;&amp; (
+                &lt;CardIndicateur
+                  logo={logoPoulet}
+                  back={"#4ab8ff"}
+                  opacity={0.1}
+                  info={userData.keyData.proteinCount}
+                  unite={"g"}
+                  type={"Proteines"}
+                />
+              )}
+              {!isLoadingActivity &amp;&amp; (
+                &lt;CardIndicateur
+                  logo={logoPomme}
+                  back={"#F9CE23"}
+                  opacity={0.1}
+                  info={userData.keyData.carbohydrateCount}
+                  unite={"g"}
+                  type={"Glucides"}
+                />
+              )}
+              {!isLoadingActivity &amp;&amp; (
+                &lt;CardIndicateur
+                  logo={logoCheese}
+                  back={"#fd5181"}
+                  opacity={0.1}
+                  info={userData.keyData.lipidCount}
+                  unite={"g"}
+                  type={"Lipides"}
+                />
+              )}
+            &lt;/ul>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+    );
+  }
+    
+  
+
+
+  
+}
+
+export default Content;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardIndicateur">CardIndicateur</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#ContentMock">ContentMock</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#GraphiqueBarChart">GraphiqueBarChart</a></li><li><a href="global.html#GraphiqueLineChart">GraphiqueLineChart</a></li><li><a href="global.html#GraphiquePieChart">GraphiquePieChart</a></li><li><a href="global.html#GraphiqueRadarChart">GraphiqueRadarChart</a></li><li><a href="global.html#LineCustomTooltip">LineCustomTooltip</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Jan 27 2023 11:27:10 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

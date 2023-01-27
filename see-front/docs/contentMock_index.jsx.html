@@ -1,4 +1,32 @@
-import React from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: contentMock/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: contentMock/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import GraphiqueBarChart from "../chart/barChart";
@@ -101,40 +129,40 @@ function ContentMock() {
 
 
   if(!userData){
-    return <Erreur />
+    return &lt;Erreur />
   }else {
   return (
-    <div className="contentGraphique">
-      <div className="titre">
-        {!isLoadingName && (
-          <p className="contentWelcome">
-            Bonjour <span>{userData.userInfos.firstName}</span>
-          </p>
+    &lt;div className="contentGraphique">
+      &lt;div className="titre">
+        {!isLoadingName &amp;&amp; (
+          &lt;p className="contentWelcome">
+            Bonjour &lt;span>{userData.userInfos.firstName}&lt;/span>
+          &lt;/p>
         )}
-        <p className="contentGG">
+        &lt;p className="contentGG">
           Félicitation ! Vous avez explosé vos objectifs hier 👏
-        </p>
-      </div>
-      <div className="groupChartCard">
-        <div className="groupChart">
-          <div>
-            {!isLoadingActivity && <GraphiqueBarChart source={userActivity} />}
-          </div>
-          <div>
-            {!isLoadingSession && <GraphiqueLineChart source={userSession} />}
-          </div>
-          <div>
-            {!isLoadingPerformance && (
-              <GraphiqueRadarChart source={userPerformance} />
+        &lt;/p>
+      &lt;/div>
+      &lt;div className="groupChartCard">
+        &lt;div className="groupChart">
+          &lt;div>
+            {!isLoadingActivity &amp;&amp; &lt;GraphiqueBarChart source={userActivity} />}
+          &lt;/div>
+          &lt;div>
+            {!isLoadingSession &amp;&amp; &lt;GraphiqueLineChart source={userSession} />}
+          &lt;/div>
+          &lt;div>
+            {!isLoadingPerformance &amp;&amp; (
+              &lt;GraphiqueRadarChart source={userPerformance} />
             )}
-          </div>
-          <div>{!isLoadingName && <GraphiquePieChart source={userData} />}</div>
-        </div>
+          &lt;/div>
+          &lt;div>{!isLoadingName &amp;&amp; &lt;GraphiquePieChart source={userData} />}&lt;/div>
+        &lt;/div>
 
-        <div>
-          <ul className="groupCard">
-            {!isLoadingActivity && (
-              <CardIndicateur
+        &lt;div>
+          &lt;ul className="groupCard">
+            {!isLoadingActivity &amp;&amp; (
+              &lt;CardIndicateur
                 logo={logoEnergy}
                 back={"#FF0000"}
                 opacity={0.1}
@@ -143,8 +171,8 @@ function ContentMock() {
                 type={"Calories"}
               />
             )}
-            {!isLoadingActivity && (
-              <CardIndicateur
+            {!isLoadingActivity &amp;&amp; (
+              &lt;CardIndicateur
                 logo={logoPoulet}
                 back={"#4ab8ff"}
                 opacity={0.1}
@@ -153,8 +181,8 @@ function ContentMock() {
                 type={"Proteines"}
               />
             )}
-            {!isLoadingActivity && (
-              <CardIndicateur
+            {!isLoadingActivity &amp;&amp; (
+              &lt;CardIndicateur
                 logo={logoPomme}
                 back={"#F9CE23"}
                 opacity={0.1}
@@ -163,8 +191,8 @@ function ContentMock() {
                 type={"Glucides"}
               />
             )}
-            {!isLoadingActivity && (
-              <CardIndicateur
+            {!isLoadingActivity &amp;&amp; (
+              &lt;CardIndicateur
                 logo={logoCheese}
                 back={"#fd5181"}
                 opacity={0.1}
@@ -173,12 +201,35 @@ function ContentMock() {
                 type={"Lipides"}
               />
             )}
-          </ul>
-        </div>
-      </div>
-    </div>
+          &lt;/ul>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
   );
 }
 }
 
 export default ContentMock;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardIndicateur">CardIndicateur</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#ContentMock">ContentMock</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#GraphiqueBarChart">GraphiqueBarChart</a></li><li><a href="global.html#GraphiqueLineChart">GraphiqueLineChart</a></li><li><a href="global.html#GraphiquePieChart">GraphiquePieChart</a></li><li><a href="global.html#GraphiqueRadarChart">GraphiqueRadarChart</a></li><li><a href="global.html#LineCustomTooltip">LineCustomTooltip</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Jan 27 2023 11:27:10 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

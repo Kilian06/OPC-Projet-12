@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: chart/barChart/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: chart/barChart/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import PropTypes from 'prop-types';
+
+import {
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
+
+import CustomTooltip from "../tools/customTooltip";
+
+
+/**
+ * this function allows to generate a bar graph with the data of the elements passed in props
+ * in this case the graph is used to represent the energy spent by the user and its weight
+ * @param {*} props response of the API http://localhost:3000/user/${id}/activity
+ * @returns React Component - BarChart
+ */
+
+function GraphiqueBarChart(props) {
+  // data formatting
+  const data = props.source.sessions;
+  const ymax = Math.max(...data.map((sessions) => sessions.kilogram));
+  const ymin = Math.min(...data.map((sessions) => sessions.kilogram));
+
+  return (
+    &lt;div className="chartActiviteQuot">
+      &lt;p className="chartActiviteTitre">Activité quotidienne&lt;/p>
+      &lt;ResponsiveContainer width="100%" height={320}>
+        &lt;BarChart
+          data={data}
+          margin={{
+            top: 20,
+            right: 0,
+            left: 30,
+            bottom: 5,
+          }}
+        >
+          &lt;CartesianGrid strokeDasharray="3 3" vertical={false} />
+          &lt;XAxis dataKey="day" type="category" stroke="#9B9EAC" />
+          &lt;YAxis
+            type="number"
+            yAxisId="left"
+            orientation="left"
+            stroke="#E60000"
+            hide={true}
+          />
+          &lt;YAxis
+            yAxisId="right"
+            orientation="right"
+            stroke="#9B9EAC"
+            domain={[ymin - 2, ymax + 2]}
+            axisLine={false}
+            tickLine={false}
+          />
+          &lt;Tooltip
+            content={(props) => &lt;CustomTooltip {...props} />}
+            wrapperStyle={{
+              color: "#FFFFFF",
+              background: "red",
+              border: "none",
+              outline: "none",
+              width: "50px",
+              height: "70px",
+              textAlign: "center",
+              lineHeight: "3",
+              fontSize: "12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            margin={{ top: 0, left: 0, right: 0, bottom: 0 }}
+          />
+          &lt;Legend
+            height={40}
+            verticalAlign="top"
+            align="right"
+            iconType={"circle"}
+          />{" "}
+          &lt;Bar
+            yAxisId="right"
+            dataKey="kilogram"
+            fill="#282D30"
+            barSize={7}
+            radius={[5, 5, 0, 0]}
+            name={"Poids (kg)"}
+          />
+          &lt;Bar
+            yAxisId="left"
+            dataKey="calories"
+            fill="#E60000"
+            barSize={7}
+            radius={[5, 5, 0, 0]}
+            name={"Calories brûlées (kCal)"}
+          />
+        &lt;/BarChart>
+      &lt;/ResponsiveContainer>
+    &lt;/div>
+  );
+}
+
+// propType of the fonction to check if props value is OK with the component
+GraphiqueBarChart.propTypes = {
+      source: PropTypes.shape({
+          userId: PropTypes.number.isRequired,
+          sessions: PropTypes.arrayOf(PropTypes.shape({
+              day: PropTypes.string.isRequired,
+              kilogram: PropTypes.number.isRequired,
+              calories: PropTypes.number.isRequired
+          })).isRequired
+      }).isRequired
+};
+
+
+export default GraphiqueBarChart;
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardIndicateur">CardIndicateur</a></li><li><a href="global.html#Content">Content</a></li><li><a href="global.html#ContentMock">ContentMock</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#GraphiqueBarChart">GraphiqueBarChart</a></li><li><a href="global.html#GraphiqueLineChart">GraphiqueLineChart</a></li><li><a href="global.html#GraphiquePieChart">GraphiquePieChart</a></li><li><a href="global.html#GraphiqueRadarChart">GraphiqueRadarChart</a></li><li><a href="global.html#LineCustomTooltip">LineCustomTooltip</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Jan 27 2023 11:27:10 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
