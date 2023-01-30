@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: api.js</title>
+    <title>JSDoc: Source: components/indicateur/indicateur.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: api.js</h1>
+    <h1 class="page-title">Source: components/indicateur/indicateur.jsx</h1>
 
     
 
@@ -26,38 +26,44 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Array of list Endpoint
-let arrayApi =["http://localhost:3000/user/iduser", "http://localhost:3000/user/iduser/activity", "http://localhost:3000/user/iduser/average-sessions", "http://localhost:3000/user/iduser/performance"]
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import PropTypes from 'prop-types';
+import PictoTagVert from '../pictoTagVert/pictoTagVert';
 
 /**
- * Function that make API call
- * @param {*} id the ID is a parameter who is get in the URL
- * @param {*} indexArrayApi this is the number of the index endpoint to make the call on the right API
- * @returns data from call API
+ * 
+ * @param {*} props 
+ * @returns A card with information
  */
-export async function callApi(id, indexArrayApi){
+function CardIndicateur(props) {
+    console.log(props)
+    return (
+        &lt;li className='cardIndicateur'>
+            &lt;div className='cardPicto'>
+            &lt;PictoTagVert
+          picto={props.logo}
+          backgroundColor={props.back}
+          opacity={props.opacity} />
+            &lt;/div>
+            &lt;div className='cardContent'>
+                &lt;p className='cardValue'>{props.info + props.unite}&lt;/p>
+                &lt;p className='cardLegend'>{props.type}&lt;/p>
+            &lt;/div>
 
-    const apiEndPoint = arrayApi[indexArrayApi].replace("iduser", id )
-    let result
-    try {
+        &lt;/li>
+    );
+}
 
-    const response = await fetch(apiEndPoint);
-      result = await response.json();
-      if(!response.ok){
-        throw new Error()
-      }
-      
-    } catch (error) {
-        result = 0
+CardIndicateur.propTypes = {
+    back: PropTypes.string.isRequired,
+    info: PropTypes.number.isRequired,
+    logo: PropTypes.string.isRequired,
+    opacity: PropTypes.number,
+    type: PropTypes.string,
+    unite: PropTypes.string.isRequired,
+  };
 
-    }
-    if(indexArrayApi === 1){
-        return result
-    }
-
-    return result.data
-
-}</code></pre>
+export default CardIndicateur;</code></pre>
         </article>
     </section>
 

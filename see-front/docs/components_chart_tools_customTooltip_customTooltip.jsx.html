@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: api.js</title>
+    <title>JSDoc: Source: components/chart/tools/customTooltip/customTooltip.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: api.js</h1>
+    <h1 class="page-title">Source: components/chart/tools/customTooltip/customTooltip.jsx</h1>
 
     
 
@@ -26,38 +26,28 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>// Array of list Endpoint
-let arrayApi =["http://localhost:3000/user/iduser", "http://localhost:3000/user/iduser/activity", "http://localhost:3000/user/iduser/average-sessions", "http://localhost:3000/user/iduser/performance"]
-
+            <pre class="prettyprint source linenums"><code>import React from "react";
 /**
- * Function that make API call
- * @param {*} id the ID is a parameter who is get in the URL
- * @param {*} indexArrayApi this is the number of the index endpoint to make the call on the right API
- * @returns data from call API
+ * This function is used to display the data of the daily activity graph as a dot when hovering over it.
+ * @param {*} active active sign that the mouse is currently flying over the graph
+ * @returns payload for hover
  */
-export async function callApi(id, indexArrayApi){
+function CustomTooltip(active) {
+  if (active.active) {
+    return (
+      &lt;div>
+        &lt;p>{active.payload[0].value+"kg"}&lt;/p>
+        &lt;p>{active.payload[1].value+"Kcal"}&lt;/p>
 
-    const apiEndPoint = arrayApi[indexArrayApi].replace("iduser", id )
-    let result
-    try {
+      &lt;/div>
+    );
+  }
+  return null;
+}
+export default CustomTooltip;
 
-    const response = await fetch(apiEndPoint);
-      result = await response.json();
-      if(!response.ok){
-        throw new Error()
-      }
-      
-    } catch (error) {
-        result = 0
 
-    }
-    if(indexArrayApi === 1){
-        return result
-    }
-
-    return result.data
-
-}</code></pre>
+</code></pre>
         </article>
     </section>
 
