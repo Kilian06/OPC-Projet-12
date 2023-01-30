@@ -1,16 +1,16 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import GraphiqueBarChart from "../chart/barChart";
-import GraphiqueLineChart from "../chart/lineChart";
-import GraphiquePieChart from "../chart/pieChart";
-import GraphiqueRadarChart from "../chart/radarChart";
+import GraphiqueBarChart from "../chart/barChart/barChart";
+import GraphiqueLineChart from "../chart/lineChart/lineChart";
+import GraphiquePieChart from "../chart/pieChart/pieChart";
+import GraphiqueRadarChart from "../chart/radarChart/radarChart";
 import logoEnergy from "../../assets/energy.svg";
 import logoPoulet from "../../assets/chicken.svg";
 import logoPomme from "../../assets/apple.svg";
 import logoCheese from "../../assets/cheeseburger.svg";
-import CardIndicateur from "../indicateur";
-import Erreur from "../erreur";
+import CardIndicateur from "../indicateur/indicateur";
+import Erreur from "../erreur/erreur";
 import { callApi } from "../../api";
 /**
  * This function is used to make all the API calls necessary to create the graphics. It also calls each react component to represent them

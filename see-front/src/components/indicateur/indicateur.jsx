@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import PictoTagVert from '../pictoTagVert';
+import PictoTagVert from '../pictoTagVert/pictoTagVert';
 
 /**
  * 

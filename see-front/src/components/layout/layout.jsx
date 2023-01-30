@@ -1,5 +1,5 @@
-import NavBarHor from "../navBarHor";
-import NavBarVer from "../navBarVer";
+import NavBarHor from "../navBarHor/navBarHor";
+import NavBarVer from "../navBarVer/navBarVer";
 import { useState } from "react";
 
 function Layout(props) {

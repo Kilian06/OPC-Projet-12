@@ -12,7 +12,7 @@ import {
   Legend,
 } from "recharts";
 
-import CustomTooltip from "../tools/customTooltip";
+import CustomTooltip from "../tools/customTooltip/customTooltip";
 
 
 /**

@@ -1,17 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import GraphiqueBarChart from "../chart/barChart";
-import GraphiqueLineChart from "../chart/lineChart";
-import GraphiquePieChart from "../chart/pieChart";
-import GraphiqueRadarChart from "../chart/radarChart";
+import GraphiqueBarChart from "../chart/barChart/barChart";
+import GraphiqueLineChart from "../chart/lineChart/lineChart";
+import GraphiquePieChart from "../chart/pieChart/pieChart";
+import GraphiqueRadarChart from "../chart/radarChart/radarChart";
 import logoEnergy from "../../assets/energy.svg";
 import logoPoulet from "../../assets/chicken.svg";
 import logoPomme from "../../assets/apple.svg";
 import logoCheese from "../../assets/cheeseburger.svg";
-import CardIndicateur from "../indicateur";
+import CardIndicateur from "../indicateur/indicateur";
 import { USER_MAIN_DATA } from "../../data/datamock.js";
-import Erreur from "../erreur";
+import Erreur from "../erreur/erreur";
 
 import {
   USER_ACTIVITY,

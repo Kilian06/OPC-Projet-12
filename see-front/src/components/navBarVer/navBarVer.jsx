@@ -3,7 +3,7 @@ import logosport1 from '../../assets/sport1.png'
 import logosport2 from '../../assets/sport2.png'
 import logosport3 from '../../assets/sport3.png'
 import logosport4 from '../../assets/sport4.png'
-import PictoTagVert from '../pictoTagVert';
+import PictoTagVert from '../pictoTagVert/pictoTagVert';
 
 
 function NavBarVer(props) {

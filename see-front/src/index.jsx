@@ -3,13 +3,13 @@
 
 import React from 'react';
 import './styles/main.scss'
-import Layout from './components/layout/index';
-import Content from './components/content';
+import Layout from './components/layout/layout';
+import Content from './components/content/content';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
-import ContentMock from './components/contentMock';
-import Navbouton from './components/navlink';
-import Erreur from './components/erreur';
+import ContentMock from './components/contentMock/contentMock';
+import Navbouton from './components/navlink/navLink';
+import Erreur from './components/erreur/erreur';
 
 
 

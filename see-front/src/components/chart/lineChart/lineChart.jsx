@@ -10,7 +10,7 @@ import {
   Rectangle,
   Customized,
 } from "recharts";
-import LineCustomTooltip from "../tools/lineTooltip";
+import LineCustomTooltip from "../tools/lineTooltip/lineTooltip";
 
 /**
  * this function allows to generate a line graph with the data of the elements passed in props
