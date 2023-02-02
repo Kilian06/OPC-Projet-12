@@ -16,7 +16,7 @@ OPC-PROJET-12/
 |      |- assets
 |      |- components
 |      |      |-component1
-|      |            |- index.jsx
+|      |            |- component1.jsx
 |      |            |- composant1.scss
 |      |- styles
 |      |      |-mains.scss
