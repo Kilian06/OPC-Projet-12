@@ -66,7 +66,7 @@ After that, navigate to the frontend directory in the terminal and type ```npm s
 Since the backend is already running, the terminal will prompt you to confirm using port 3001 instead of 3000 (which is already in use by the backend). To do this, type ```Y``` and press ```Enter```. After that, a browser page should open on the URL :```http://localhost:3001/```
 
 
-## 3. - Back-end
+## 3. - Back-end ([Link](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard))
 ## 3.1 - Back-end : Installation
 - [NodeJS (version 12.18)](https://nodejs.org/en/blog/release/v12.18.0/)
 - Yarn
